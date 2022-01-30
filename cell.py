@@ -23,7 +23,10 @@ class Cell(Rect):
         return "X" if self.active else "_"
 
     def flip(self):
-        self.active = not self.active
+        if self.active:
+            self.active = False
+        else:
+            self.active = True
 
     def set_active(self):
         self.active = True
@@ -41,4 +44,4 @@ class Cell(Rect):
 
     def update(self):
         self.active = self.future_state
-        self.future_state = None
+        self.future_state = not self.active
